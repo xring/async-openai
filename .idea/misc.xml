@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SbtLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$USER_HOME$/dev/code/cerebro" value="PREVIEW" />
+        <entry key="$USER_HOME$/dev/code/igs" value="PREVIEW" />
+        <entry key="$USER_HOME$/dev/code/rocket" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="ScalaSbtSettings">
+    <option name="customVMPath" />
+  </component>
+</project>

@@ -263,6 +263,24 @@ impl<C: Config> Client<C> {
         self.execute(request_maker).await
     }
 
+    /// Make a POST request to {path} and deserialize the response body
+    pub(crate) async fn post_with_raw<O>(&self, path: &str, request: String) -> Result<O, OpenAIError>
+    where
+        O: DeserializeOwned,
+    {
+        let request_maker = || async {
+            Ok(self
+                .http_client
+                .post(self.config.url(path))
+                .query(&self.config.query())
+                .headers(self.config.headers())
+                .body(request.clone())
+                .build()?)
+        };
+
+        self.execute(request_maker).await
+    }
+
     /// POST a form at {path} and return the response body
     pub(crate) async fn post_form_raw<F>(&self, path: &str, form: F) -> Result<Bytes, OpenAIError>
     where

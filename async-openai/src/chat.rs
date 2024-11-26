@@ -32,6 +32,14 @@ impl<'c, C: Config> Chat<'c, C> {
         self.client.post("/chat/completions", request).await
     }
 
+    /// Creates a model response for the given chat conversation.
+    pub async fn create_with_raw(
+        &self,
+        request: String,
+    ) -> Result<CreateChatCompletionResponse, OpenAIError> {
+        self.client.post_with_raw("/chat/completions", request).await
+    }
+
     /// Creates a completion for the chat message
     ///
     /// partial message deltas will be sent, like in ChatGPT. Tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message.
