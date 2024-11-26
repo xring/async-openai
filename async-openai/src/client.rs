@@ -274,6 +274,7 @@ impl<C: Config> Client<C> {
                 .post(self.config.url(path))
                 .query(&self.config.query())
                 .headers(self.config.headers())
+                .header("Content-Type", "application/json")
                 .body(request.clone())
                 .build()?)
         };

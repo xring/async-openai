@@ -37,7 +37,6 @@ impl<'c, C: Config> Chat<'c, C> {
         &self,
         request: String,
     ) -> Result<CreateChatCompletionResponse, OpenAIError> {
-        println!("{:?}", request);
         self.client.post_with_raw("/chat/completions", request).await
     }
 
